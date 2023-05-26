@@ -4,7 +4,7 @@ from .api import TestApiSet
 from rest_framework import routers
 
 
-router = routers.SimpleRouter()
+router = routers.DefaultRouter()
 router.register(r'prefix', TestApiSet)
 
 urlpatterns = [
