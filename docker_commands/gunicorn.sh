@@ -4,6 +4,15 @@ export DJANGO_SETTINGS_MODULE=settings.settings
 
 python manage.py migrate
 
+cd core/utils
+
+python database_load_data.py
+
+cd ../../
+
+
+#python manage.py loaddata fixtures/location.json > /dev/null
+
 #exec gunicorn settings.wsgi:application \
 #    --name delivery_test \
 #    --bind 0.0.0.0:8000 \

@@ -1,0 +1,22 @@
+[
+  {"model": "core.car", "pk": "1231A", "fields": {"capacity": 100}},
+  {"model": "core.car", "pk": "1232A", "fields": {"capacity": 200}},
+  {"model": "core.car", "pk": "1233A", "fields": {"capacity": 300}},
+  {"model": "core.car", "pk": "1234A", "fields": {"capacity": 400}},
+  {"model": "core.car", "pk": "1235A", "fields": {"capacity": 500}},
+  {"model": "core.car", "pk": "1236A", "fields": {"capacity": 150}},
+  {"model": "core.car", "pk": "1237A", "fields": {"capacity": 250}},
+  {"model": "core.car", "pk": "1238A", "fields": {"capacity": 350}},
+  {"model": "core.car", "pk": "1239A", "fields": {"capacity": 450}},
+  {"model": "core.car", "pk": "1230A", "fields": {"capacity": 550}},
+  {"model": "core.car", "pk": "2231A", "fields": {"capacity": 100}},
+  {"model": "core.car", "pk": "2232A", "fields": {"capacity": 200}},
+  {"model": "core.car", "pk": "2233A", "fields": {"capacity": 300}},
+  {"model": "core.car", "pk": "2234A", "fields": {"capacity": 400}},
+  {"model": "core.car", "pk": "2235A", "fields": {"capacity": 500}},
+  {"model": "core.car", "pk": "2236A", "fields": {"capacity": 150}},
+  {"model": "core.car", "pk": "2237A", "fields": {"capacity": 250}},
+  {"model": "core.car", "pk": "2238A", "fields": {"capacity": 350}},
+  {"model": "core.car", "pk": "2239A", "fields": {"capacity": 450}},
+  {"model": "core.car", "pk": "2230A", "fields": {"capacity": 550}}
+]
