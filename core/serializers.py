@@ -21,8 +21,6 @@ class CarSerializer(serializers.ModelSerializer):
 
 
 class CargoSerializer(serializers.ModelSerializer):
-    location_pickup = LocationSerializer(many=False)
-    location_delivery = LocationSerializer(many=False)
 
     class Meta:
         model = Cargo
@@ -30,8 +28,10 @@ class CargoSerializer(serializers.ModelSerializer):
 
 
 class CargoWithCarsSerializer(CargoSerializer):
+    location_pickup = LocationSerializer(many=False)
+    location_delivery = LocationSerializer(many=False)
     nearest_car = serializers.IntegerField()
 
 
-class CargoWithCarsListSerializer(CargoSerializer):
+class CargoWithCarsListSerializer(CargoWithCarsSerializer):
     nearest_car = serializers.ListField(child=serializers.DictField())
