@@ -14,5 +14,5 @@ urlpatterns = [
     path('', include(location.urls)),
     path('', include(car.urls)),
     path('', include(cargo.urls)),
-    path('car-random-logation/', CarApiCreate.as_view({'post': 'create'})),
+    path('car-random-location/', CarApiCreate.as_view({'post': 'create'})),
 ]
