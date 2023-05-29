@@ -8,6 +8,8 @@ cd core/utils
 
 python database_load_data.py
 
+python schedule_script.py > /dev/null &
+
 cd ../../
 
 

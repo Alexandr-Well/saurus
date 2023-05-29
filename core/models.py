@@ -1,8 +1,6 @@
 import random
-
 from django.db import models
-from django.db.models.signals import pre_save
-from django.dispatch import receiver
+
 
 
 class Location(models.Model):
@@ -11,6 +9,9 @@ class Location(models.Model):
     state_name = models.CharField(max_length=255)
     lat = models.DecimalField(max_digits=9, decimal_places=6)
     lng = models.DecimalField(max_digits=9, decimal_places=6)
+
+    class Meta:
+        ordering = ['zip']
 
 
 class Car(models.Model):
@@ -22,6 +23,9 @@ class Car(models.Model):
     number = models.CharField(max_length=5, unique=True, primary_key=True, db_index=True)
     location = models.ForeignKey(Location, on_delete=models.DO_NOTHING, null=True)
     capacity = models.SmallIntegerField()
+
+    class Meta:
+        ordering = ['number']
 
     def save(self, *args, **kwargs):
         # не самое лучшее решение
@@ -36,6 +40,9 @@ class Cargo(models.Model):
     location_delivery = models.ForeignKey(Location, on_delete=models.DO_NOTHING, related_name='location_to')
     weight = models.SmallIntegerField()
     description = models.CharField(max_length=255)
+
+    class Meta:
+        ordering = ['-id']
 
 
 
