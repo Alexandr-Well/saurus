@@ -63,7 +63,7 @@ class CargoApiSet(viewsets.ModelViewSet):
 
     def get_filtered_cars(self, cargo, cars_list, default):
         cargo.nearest_car = len(tuple(filter(
-            lambda item: item <= self.get_manage_filtering().get('_nearest_car', default), cars_list
+            lambda item: item <= float(self.get_manage_filtering().get('_nearest_car', default)), cars_list
         )))
 
     def get_filtering(self):
