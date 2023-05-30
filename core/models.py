@@ -2,7 +2,6 @@ import random
 from django.db import models
 
 
-
 class Location(models.Model):
     zip = models.IntegerField(primary_key=True, db_index=True, unique=True)
     city = models.CharField(max_length=255)
@@ -43,8 +42,3 @@ class Cargo(models.Model):
 
     class Meta:
         ordering = ['-id']
-
-
-
-
-

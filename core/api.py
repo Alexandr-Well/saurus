@@ -71,14 +71,14 @@ class CargoApiSet(viewsets.ModelViewSet):
         for key, val in self.request.query_params.items():
             if key.startswith('_') or key.startswith('__'):
                 continue
-            flt[key] = float(val)
+            flt[key] = val
         return flt
 
     def get_manage_filtering(self):
         flt = {}
         for key, val in self.request.query_params.items():
             if key.startswith('_'):
-                flt[key] = float(val)
+                flt[key] = val
         return flt
 
     @swagger_auto_schema(
