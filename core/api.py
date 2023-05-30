@@ -120,7 +120,7 @@ class CargoApiSet(viewsets.ModelViewSet):
                 queryset = queryset.select_related('location_pickup').filter(**self.get_filtering())
                 cars = tuple(Car.objects.select_related('location').all())
                 if self.get_manage_filtering().get('_min_distance'):
-                    min_distance = self.get_manage_filtering().get('_min_distance')
+                    min_distance = float(self.get_manage_filtering().get('_min_distance'))
                     to_exclude = []
                     qs = list(queryset)
                     for index, cargo in enumerate(qs):
