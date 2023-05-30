@@ -2,7 +2,11 @@ import re
 from rest_framework import serializers
 
 
-class CarNumberValidator:
+class RegexValidator:
+    """
+        valid data
+        regex valid data by mask
+    """
     message = 'car number should be like xxxxY where x-digit, y-latin char Uppercase'
 
     def __init__(self, field_name: str, mask: str, message=None):
@@ -17,7 +21,12 @@ class CarNumberValidator:
             raise serializers.ValidationError(self.message, code=417)
 
 
-class WeightValidator:
+class IntegerNumberValidator:
+    """
+        valid data
+        from weight_min: int
+        to weight_max: int
+    """
     message = '{this} field must be more 1 and less 1000 (1000 is ok)'
 
     def __init__(self, field_name: str, weight_min: int, weight_max: int, message=None):
