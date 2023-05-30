@@ -1,9 +1,8 @@
 import random
-
+import json
 import django
 
 django.setup()
-import json
 from core.models import Location, Car
 
 data = Location.objects.first()
@@ -24,7 +23,6 @@ if not data:
     Location.objects.bulk_create(to_sql)
 
 data = Car.objects.first()
-
 
 
 if not data:

@@ -4,7 +4,6 @@ import schedule
 import django
 
 django.setup()
-
 from core.models import Car, Location
 
 
