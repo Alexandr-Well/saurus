@@ -49,7 +49,7 @@ class CargoApiSet(viewsets.ModelViewSet):
 
     """
     pagination_class = CommonPagination
-    queryset = Cargo.objects.all()
+    queryset = Cargo.objects.select_related('location_pickup').all()
     serializer_class = CargoSerializer
 
     @staticmethod
@@ -97,16 +97,15 @@ class CargoApiSet(viewsets.ModelViewSet):
         return super().list(*args, **kwargs)
 
     def get_object(self):
+        obj = super().get_object()
         if self.request.method == 'GET':
-            obj = Cargo.objects.select_related('location_pickup').get(pk=self.kwargs.get('pk'))
             cars_list = list(map(lambda car: {
                 car.number: DistanceCounter.count_distance((obj.location_pickup.lat, obj.location_pickup.lng),
                                                            (car.location.lat, car.location.lng))},
                                  Car.objects.select_related('location').all()))
             obj.nearest_car = cars_list
             self.serializer_class = CargoWithCarsListSerializer
-            return obj
-        return super().get_object()
+        return obj
 
     def get_queryset(self):
         assert self.queryset is not None, (
@@ -117,7 +116,7 @@ class CargoApiSet(viewsets.ModelViewSet):
         queryset = self.queryset
         if isinstance(queryset, QuerySet):
             if self.request.method == 'GET' and not self.kwargs.get('pk'):
-                queryset = queryset.select_related('location_pickup').filter(**self.get_filtering())
+                queryset = queryset.filter(**self.get_filtering())
                 cars = tuple(Car.objects.select_related('location').all())
                 if self.get_manage_filtering().get('_min_distance'):
                     min_distance = float(self.get_manage_filtering().get('_min_distance'))
